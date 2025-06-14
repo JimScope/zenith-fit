@@ -1,0 +1,266 @@
+[
+  {
+    "week": 1,
+    "phase": "Adaptación",
+    "workouts": [
+      { "name": "Sentadillas", "reps": 12 },
+      { "name": "Flexiones de brazos", "reps": 8 },
+      { "name": "Dominadas asistidas", "reps": 5 },
+      { "name": "Plancha estática (segundos)", "reps": 30 }
+    ],
+    "diet": { "calories": 3000, "protein": 140, "carbs": 452, "fats": 70 }
+  },
+  {
+    "week": 2,
+    "phase": "Adaptación",
+    "workouts": [
+      { "name": "Sentadillas", "reps": 15 },
+      { "name": "Flexiones de brazos", "reps": 10 },
+      { "name": "Dominadas asistidas", "reps": 6 },
+      { "name": "Plancha estática (segundos)", "reps": 40 }
+    ],
+    "diet": { "calories": 3050, "protein": 141, "carbs": 464, "fats": 70 }
+  },
+  {
+    "week": 3,
+    "phase": "Adaptación",
+    "workouts": [
+      { "name": "Sentadillas", "reps": 15 },
+      { "name": "Flexiones de brazos", "reps": 12 },
+      { "name": "Dominadas asistidas", "reps": 8 },
+      { "name": "Plancha estática (segundos)", "reps": 45 }
+    ],
+    "diet": { "calories": 3100, "protein": 142, "carbs": 473, "fats": 71 }
+  },
+  {
+    "week": 4,
+    "phase": "Adaptación",
+    "workouts": [
+      { "name": "Sentadillas", "reps": 20 },
+      { "name": "Flexiones de brazos", "reps": 15 },
+      { "name": "Dominadas asistidas", "reps": 10 },
+      { "name": "Plancha estática (segundos)", "reps": 60 }
+    ],
+    "diet": { "calories": 3150, "protein": 143, "carbs": 485, "fats": 71 }
+  },
+  {
+    "week": 5,
+    "phase": "Fuerza Base",
+    "workouts": [
+      { "name": "Sentadillas con mochila (kg 10)", "reps": 8 },
+      { "name": "Fondos en silla lastrados", "reps": 6 },
+      { "name": "Dominadas asistidas", "reps": 6 },
+      { "name": "Plancha lateral (segundos)", "reps": 45 }
+    ],
+    "diet": { "calories": 3200, "protein": 143, "carbs": 495, "fats": 72 }
+  },
+  {
+    "week": 6,
+    "phase": "Fuerza Base",
+    "workouts": [
+      { "name": "Sentadillas con mochila (kg 12)", "reps": 8 },
+      { "name": "Fondos en paralelas", "reps": 6 },
+      { "name": "Dominadas asistidas", "reps": 8 },
+      { "name": "Plancha lateral (segundos)", "reps": 50 }
+    ],
+    "diet": { "calories": 3250, "protein": 144, "carbs": 506, "fats": 72 }
+  },
+  {
+    "week": 7,
+    "phase": "Fuerza Base",
+    "workouts": [
+      { "name": "Sentadillas con mochila (kg 12)", "reps": 8 },
+      { "name": "Flexiones con mochila", "reps": 8 },
+      { "name": "Dominadas con mochila", "reps": 6 },
+      { "name": "Zancadas búlgaras", "reps": 8 }
+    ],
+    "diet": { "calories": 3300, "protein": 145, "carbs": 516, "fats": 73 }
+  },
+  {
+    "week": 8,
+    "phase": "Fuerza Base",
+    "workouts": [
+      { "name": "Sentadillas con mochila (kg 15)", "reps": 8 },
+      { "name": "Flexiones lastradas", "reps": 8 },
+      { "name": "Fondos lastrados", "reps": 8 },
+      { "name": "Remo invertido con mochila", "reps": 8 }
+    ],
+    "diet": { "calories": 3350, "protein": 146, "carbs": 527, "fats": 73 }
+  },
+  {
+    "week": 9,
+    "phase": "Fuerza Base",
+    "workouts": [
+      { "name": "Sentadillas con mochila (kg 15)", "reps": 6 },
+      { "name": "Flexiones declinadas lastradas", "reps": 10 },
+      { "name": "Dominadas reales", "reps": 8 },
+      { "name": "Zancadas con mochila", "reps": 10 }
+    ],
+    "diet": { "calories": 3400, "protein": 147, "carbs": 539, "fats": 73 }
+  },
+  {
+    "week": 10,
+    "phase": "Fuerza Base",
+    "workouts": [
+      { "name": "Sentadillas con mochila (kg 17)", "reps": 6 },
+      { "name": "Flexiones con mochila", "reps": 10 },
+      { "name": "Fondos lastrados", "reps": 10 },
+      { "name": "Dominadas", "reps": 8 }
+    ],
+    "diet": { "calories": 3450, "protein": 148, "carbs": 548, "fats": 74 }
+  },
+  {
+    "week": 11,
+    "phase": "Hipertrofia",
+    "workouts": [
+      { "name": "Sentadilla búlgara", "reps": 8 },
+      { "name": "Burpees con sentadilla", "reps": 12 },
+      { "name": "Flexiones diamante", "reps": 10 },
+      { "name": "Dominadas", "reps": 8 }
+    ],
+    "diet": { "calories": 3500, "protein": 149, "carbs": 560, "fats": 74 }
+  },
+  {
+    "week": 12,
+    "phase": "Hipertrofia",
+    "workouts": [
+      { "name": "Superserie: Push-ups + Remo curl banda", "reps": 10 },
+      { "name": "Elevación de piernas colgado", "reps": 10 },
+      { "name": "Twist ruso", "reps": 15 },
+      { "name": "Flexiones explosivas", "reps": 10 }
+    ],
+    "diet": { "calories": 3530, "protein": 150, "carbs": 564, "fats": 75 }
+  },
+  {
+    "week": 13,
+    "phase": "Hipertrofia",
+    "workouts": [
+      { "name": "Pistol squat asistido", "reps": 6 },
+      { "name": "Flexiones lastradas", "reps": 12 },
+      { "name": "Remo invertido lastrado", "reps": 10 },
+      { "name": "Burpees", "reps": 12 }
+    ],
+    "diet": { "calories": 3560, "protein": 150, "carbs": 571, "fats": 75 }
+  },
+  {
+    "week": 14,
+    "phase": "Hipertrofia",
+    "workouts": [
+      { "name": "Sentadilla con salto", "reps": 10 },
+      { "name": "Dips lastrados", "reps": 10 },
+      { "name": "Dominadas", "reps": 8 },
+      { "name": "Plancha con elevación de brazo", "reps": 45 }
+    ],
+    "diet": { "calories": 3590, "protein": 151, "carbs": 576, "fats": 76 }
+  },
+  {
+    "week": 15,
+    "phase": "Hipertrofia",
+    "workouts": [
+      { "name": "Zancadas con salto", "reps": 12 },
+      { "name": "Flexiones declinadas", "reps": 12 },
+      { "name": "Remo renegade", "reps": 10 },
+      { "name": "Burpees con tuck jump", "reps": 12 }
+    ],
+    "diet": { "calories": 3620, "protein": 152, "carbs": 582, "fats": 76 }
+  },
+  {
+    "week": 16,
+    "phase": "Hipertrofia",
+    "workouts": [
+      { "name": "Sentadilla frontal mochila", "reps": 10 },
+      { "name": "Pull-ups asistidos", "reps": 8 },
+      { "name": "Dips pliométricos", "reps": 8 },
+      { "name": "Plancha lateral dinámica", "reps": 45 }
+    ],
+    "diet": { "calories": 3650, "protein": 153, "carbs": 586, "fats": 77 }
+  },
+  {
+    "week": 17,
+    "phase": "Hipertrofia",
+    "workouts": [
+      { "name": "Pistol squat", "reps": 6 },
+      { "name": "Flexiones con aplauso", "reps": 8 },
+      { "name": "Remo invertido lastrado", "reps": 12 },
+      { "name": "Burpees con salto", "reps": 12 }
+    ],
+    "diet": { "calories": 3680, "protein": 154, "carbs": 593, "fats": 77 }
+  },
+  {
+    "week": 18,
+    "phase": "Hipertrofia",
+    "workouts": [
+      { "name": "Sentadilla búlgara mochila", "reps": 8 },
+      { "name": "Flexiones diamante lastradas", "reps": 10 },
+      { "name": "Dominadas lastradas", "reps": 6 },
+      { "name": "Plancha con movimiento de cadera", "reps": 45 }
+    ],
+    "diet": { "calories": 3710, "protein": 155, "carbs": 599, "fats": 77 }
+  },
+  {
+    "week": 19,
+    "phase": "Acondicionamiento",
+    "workouts": [
+      { "name": "Jump squats", "reps": 12 },
+      { "name": "Flexiones con salto", "reps": 10 },
+      { "name": "Remo con banda rápida", "reps": 12 },
+      { "name": "Zancadas explosivas", "reps": 10 }
+    ],
+    "diet": { "calories": 3725, "protein": 156, "carbs": 600, "fats": 78 }
+  },
+  {
+    "week": 20,
+    "phase": "Acondicionamiento",
+    "workouts": [
+      { "name": "Sprint en sitio (segundos)", "reps": 30 },
+      { "name": "Plancha dinámica", "reps": 45 },
+      { "name": "Burpees", "reps": 12 },
+      { "name": "Pull-ups", "reps": 6 }
+    ],
+    "diet": { "calories": 3750, "protein": 157, "carbs": 605, "fats": 78 }
+  },
+  {
+    "week": 21,
+    "phase": "Acondicionamiento",
+    "workouts": [
+      { "name": "Sentadilla con mochila (kg 20)", "reps": 8 },
+      { "name": "Flexiones pliométricas", "reps": 10 },
+      { "name": "Remo renegade rápido", "reps": 12 },
+      { "name": "Mountain climbers", "reps": 30 }
+    ],
+    "diet": { "calories": 3775, "protein": 157, "carbs": 609, "fats": 79 }
+  },
+  {
+    "week": 22,
+    "phase": "Acondicionamiento",
+    "workouts": [
+      { "name": "Burpees con salto", "reps": 15 },
+      { "name": "Pull-ups asistidos rápidos", "reps": 8 },
+      { "name": "Zancadas con salto", "reps": 12 },
+      { "name": "Plancha lateral dinámica", "reps": 60 }
+    ],
+    "diet": { "calories": 3800, "protein": 158, "carbs": 614, "fats": 79 }
+  },
+  {
+    "week": 23,
+    "phase": "Acondicionamiento",
+    "workouts": [
+      { "name": "Circuito full-body rápido", "reps": 6 },
+      { "name": "Sprint en sitio (segundos)", "reps": 30 },
+      { "name": "Flexiones con salto", "reps": 12 },
+      { "name": "Zancadas explosivas", "reps": 12 }
+    ],
+    "diet": { "calories": 3825, "protein": 159, "carbs": 617, "fats": 80 }
+  },
+  {
+    "week": 24,
+    "phase": "Acondicionamiento",
+    "workouts": [
+      { "name": "Jump squats intensos", "reps": 12 },
+      { "name": "Flexiones declinadas con salto", "reps": 10 },
+      { "name": "Pull-ups lastrados", "reps": 6 },
+      { "name": "Mountain climbers rápidos", "reps": 30 }
+    ],
+    "diet": { "calories": 3850, "protein": 160, "carbs": 622, "fats": 80 }
+  }
+]
