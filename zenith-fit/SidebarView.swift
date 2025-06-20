@@ -1,6 +1,5 @@
 //
 //  SidebarView.swift
-//  BatmanRoutine
 //
 //  Created by Jimmy Angel Pérez Díaz on 6/14/25.
 //

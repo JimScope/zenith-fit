@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		F61D459D2DFE378200B4FEDE /* BatmanRoutine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BatmanRoutine.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F646FDA32E0603F3008989E9 /* Zenith Fit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zenith Fit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		F61D459F2DFE378200B4FEDE /* BatmanRoutine */ = {
+		F646FDA42E0603F3008989E9 /* zenith-fit */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = BatmanRoutine;
+			path = "zenith-fit";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F61D459A2DFE378200B4FEDE /* Frameworks */ = {
+		F646FDA02E0603F3008989E9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -32,7 +32,7 @@
 		F61D45942DFE378200B4FEDE = {
 			isa = PBXGroup;
 			children = (
-				F61D459F2DFE378200B4FEDE /* BatmanRoutine */,
+				F646FDA42E0603F3008989E9 /* zenith-fit */,
 				F61D459E2DFE378200B4FEDE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -40,7 +40,7 @@
 		F61D459E2DFE378200B4FEDE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F61D459D2DFE378200B4FEDE /* BatmanRoutine.app */,
+				F646FDA32E0603F3008989E9 /* Zenith Fit.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,26 +48,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F61D459C2DFE378200B4FEDE /* BatmanRoutine */ = {
+		F646FDA22E0603F3008989E9 /* Zenith Fit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F61D45A92DFE378200B4FEDE /* Build configuration list for PBXNativeTarget "BatmanRoutine" */;
+			buildConfigurationList = F646FDAC2E0603F3008989E9 /* Build configuration list for PBXNativeTarget "Zenith Fit" */;
 			buildPhases = (
-				F61D45992DFE378200B4FEDE /* Sources */,
-				F61D459A2DFE378200B4FEDE /* Frameworks */,
-				F61D459B2DFE378200B4FEDE /* Resources */,
+				F646FD9F2E0603F3008989E9 /* Sources */,
+				F646FDA02E0603F3008989E9 /* Frameworks */,
+				F646FDA12E0603F3008989E9 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				F61D459F2DFE378200B4FEDE /* BatmanRoutine */,
+				F646FDA42E0603F3008989E9 /* zenith-fit */,
 			);
-			name = BatmanRoutine;
+			name = "Zenith Fit";
 			packageProductDependencies = (
 			);
-			productName = BatmanRoutine;
-			productReference = F61D459D2DFE378200B4FEDE /* BatmanRoutine.app */;
+			productName = "zenith-fit";
+			productReference = F646FDA32E0603F3008989E9 /* Zenith Fit.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -80,12 +80,12 @@
 				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
-					F61D459C2DFE378200B4FEDE = {
+					F646FDA22E0603F3008989E9 = {
 						CreatedOnToolsVersion = 16.4;
 					};
 				};
 			};
-			buildConfigurationList = F61D45982DFE378200B4FEDE /* Build configuration list for PBXProject "BatmanRoutine" */;
+			buildConfigurationList = F61D45982DFE378200B4FEDE /* Build configuration list for PBXProject "zenith-fit" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -99,13 +99,13 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F61D459C2DFE378200B4FEDE /* BatmanRoutine */,
+				F646FDA22E0603F3008989E9 /* Zenith Fit */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		F61D459B2DFE378200B4FEDE /* Resources */ = {
+		F646FDA12E0603F3008989E9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -115,7 +115,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		F61D45992DFE378200B4FEDE /* Sources */ = {
+		F646FD9F2E0603F3008989E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -245,12 +245,13 @@
 			};
 			name = Release;
 		};
-		F61D45AA2DFE378200B4FEDE /* Debug */ = {
+		F646FDAD2E0603F3008989E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = BatmanRoutine/BatmanRoutine.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "zenith-fit/zenith_fit.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -258,13 +259,15 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_CFBundleDisplayName = "Zenith Fit";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Jimmy Angel Pérez Díaz";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jimscope.BatmanRoutine;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jimscope.zenith-fit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -272,12 +275,13 @@
 			};
 			name = Debug;
 		};
-		F61D45AB2DFE378200B4FEDE /* Release */ = {
+		F646FDAE2E0603F3008989E9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = BatmanRoutine/BatmanRoutine.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "zenith-fit/zenith_fit.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -285,13 +289,15 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_CFBundleDisplayName = "Zenith Fit";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Jimmy Angel Pérez Díaz";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jimscope.BatmanRoutine;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jimscope.zenith-fit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -302,7 +308,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F61D45982DFE378200B4FEDE /* Build configuration list for PBXProject "BatmanRoutine" */ = {
+		F61D45982DFE378200B4FEDE /* Build configuration list for PBXProject "zenith-fit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F61D45A72DFE378200B4FEDE /* Debug */,
@@ -311,11 +317,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F61D45A92DFE378200B4FEDE /* Build configuration list for PBXNativeTarget "BatmanRoutine" */ = {
+		F646FDAC2E0603F3008989E9 /* Build configuration list for PBXNativeTarget "Zenith Fit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F61D45AA2DFE378200B4FEDE /* Debug */,
-				F61D45AB2DFE378200B4FEDE /* Release */,
+				F646FDAD2E0603F3008989E9 /* Debug */,
+				F646FDAE2E0603F3008989E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

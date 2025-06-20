@@ -3,15 +3,20 @@
 import SwiftUI
 import Charts
 
-// MARK: - Vistas de Detalle (Rediseñadas con Toolbar y GroupBox)
+// MARK: - Vistas de Detalle
 
 struct RouteView: View {
     @Binding var weekIndex: Int
     @ObservedObject var progressVM: ProgressViewModel
     let title: String
+    let fullPlan: [WeeklyPlan]
     
-    private let data = DataManager.shared
-    private var currentPlan: WeeklyPlan { data.plan[weekIndex] }
+    private var currentPlan: WeeklyPlan {
+        guard weekIndex < fullPlan.count else {
+            return WeeklyPlan(week: 0, phase: "Error", workouts: [], diet: Diet(calories: 0, protein: 0, carbs: 0, fats: 0))
+        }
+        return fullPlan[weekIndex]
+    }
     
     var body: some View {
         ScrollView {
@@ -24,7 +29,8 @@ struct RouteView: View {
                     GroupBox {
                         ExerciseItemView(
                             workout: workout,
-                            description: data.descriptions[workout.name] ?? "Sin descripción.",
+                            // CORREGIDO: El typo 'curren' ha sido reemplazado por 'DataManager.shared'.
+                            description: DataManager.shared.descriptions[workout.name] ?? "Sin descripción.",
                             completedReps: progressBinding
                         )
                     }
@@ -36,7 +42,7 @@ struct RouteView: View {
         .toolbar {
             ToolbarItemGroup {
                 Button("Anterior", systemImage: "arrow.left") { weekIndex -= 1 }
-                    .disabled(weekIndex == 0)
+                    .disabled(weekIndex <= 0)
                 
                 VStack {
                     ProgressView(value: progressVM.percentComplete(for: currentPlan))
@@ -45,7 +51,7 @@ struct RouteView: View {
                 }.frame(width: 50)
                 
                 Button("Siguiente", systemImage: "arrow.right") { weekIndex += 1 }
-                    .disabled(weekIndex == data.plan.count - 1)
+                    .disabled(weekIndex >= fullPlan.count - 1)
             }
         }
     }
@@ -78,16 +84,12 @@ struct DefinitionsView: View {
 }
 
 struct ChartsView: View {
-    // Recibimos el ViewModel para acceder a los datos de progreso del usuario.
     @ObservedObject var progressVM: ProgressViewModel
-    
-    // Lista de todos los ejercicios únicos disponibles en el plan.
+    let selectedHero: String // <-- CORREGIDO: Recibe el héroe actual
+
     private let allExercises: [String]
-    
-    // Estado para saber qué ejercicio está seleccionado actualmente.
     @State private var selectedExercise: String
     
-    // Estructura para los puntos de datos del gráfico de progreso.
     private struct ExerciseProgressPoint: Identifiable {
         var id: Int { week }
         let week: Int
@@ -95,30 +97,30 @@ struct ChartsView: View {
         let plannedReps: Int
     }
     
-    // Estructura para los puntos de datos del gráfico de volumen.
     private struct WeeklyVolume: Identifiable {
         var id: Int { week }
         let week: Int
         let totalReps: Int
     }
 
-    // Inicializador para configurar la lista de ejercicios y la selección inicial.
-    init(progressVM: ProgressViewModel) {
+    // CORREGIDO: El inicializador ahora acepta el héroe seleccionado.
+    init(progressVM: ProgressViewModel, selectedHero: String) {
         self.progressVM = progressVM
+        self.selectedHero = selectedHero
         
-        let allWorkoutNames = DataManager.shared.plan.flatMap { $0.workouts.map { $0.name } }
+        // CORREGIDO: Obtiene el plan para el héroe específico.
+        let heroPlan = DataManager.shared.plan(for: selectedHero)
+        let allWorkoutNames = heroPlan.flatMap { $0.workouts.map { $0.name } }
         let uniqueNames = Array(Set(allWorkoutNames)).sorted()
         
         self.allExercises = uniqueNames
         self._selectedExercise = State(initialValue: uniqueNames.first ?? "")
     }
 
-    // Calcula los datos para el gráfico de progreso del ejercicio seleccionado.
     private var progressChartData: [ExerciseProgressPoint] {
-        DataManager.shared.plan.compactMap { weekPlan in
-            // Buscamos si el ejercicio seleccionado está en esta semana.
+        // CORREGIDO: Usa el plan del héroe específico.
+        DataManager.shared.plan(for: selectedHero).compactMap { weekPlan in
             if let workout = weekPlan.workouts.first(where: { $0.name == selectedExercise }) {
-                // Obtenemos las repeticiones completadas desde el ViewModel.
                 let completed = progressVM.getProgress(for: workout, in: weekPlan.week)
                 return ExerciseProgressPoint(
                     week: weekPlan.week,
@@ -130,9 +132,9 @@ struct ChartsView: View {
         }
     }
     
-    // Calcula el volumen total (suma de todas las repeticiones completadas) por semana.
     private var volumeChartData: [WeeklyVolume] {
-        DataManager.shared.plan.map { weekPlan in
+        // CORREGIDO: Usa el plan del héroe específico.
+        DataManager.shared.plan(for: selectedHero).map { weekPlan in
             let totalCompletedReps = weekPlan.workouts.reduce(0) { sum, workout in
                 sum + progressVM.getProgress(for: workout, in: weekPlan.week)
             }
@@ -143,12 +145,9 @@ struct ChartsView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                // GRÁFICO 1: PROGRESO POR EJERCICIO
                 GroupBox {
                     VStack(alignment: .leading) {
                         Text("Progreso por Ejercicio").font(.title3).bold()
-                        
-                        // Selector para que el usuario elija el ejercicio.
                         Picker("Selecciona un ejercicio:", selection: $selectedExercise) {
                             ForEach(allExercises, id: \.self) { exerciseName in
                                 Text(exerciseName).tag(exerciseName)
@@ -158,7 +157,6 @@ struct ChartsView: View {
                         .padding(.bottom, 10)
                         
                         Chart(progressChartData) { dataPoint in
-                            // Línea para las repeticiones completadas (real).
                             LineMark(
                                 x: .value("Semana", dataPoint.week),
                                 y: .value("Completadas", dataPoint.completedReps)
@@ -166,28 +164,22 @@ struct ChartsView: View {
                             .foregroundStyle(by: .value("Tipo", "Completadas"))
                             .symbol(by: .value("Tipo", "Completadas"))
 
-                            // Línea para las repeticiones planeadas (objetivo).
                             LineMark(
                                 x: .value("Semana", dataPoint.week),
                                 y: .value("Planeadas", dataPoint.plannedReps)
                             )
                             .foregroundStyle(by: .value("Tipo", "Planeadas"))
                             .symbol(by: .value("Tipo", "Planeadas"))
-                            .lineStyle(StrokeStyle(dash: [5, 5])) // Línea discontinua para el objetivo
+                            .lineStyle(StrokeStyle(dash: [5, 5]))
                         }
-                        .chartForegroundStyleScale([
-                            "Completadas": .blue,
-                            "Planeadas": .gray
-                        ])
+                        .chartForegroundStyleScale(["Completadas": .blue, "Planeadas": .gray])
                         .frame(height: 250)
                     }
                 }
                 
-                // GRÁFICO 2: VOLUMEN TOTAL SEMANAL
                 GroupBox {
                     VStack(alignment: .leading) {
                         Text("Volumen Semanal Total (Reps Completadas)").font(.title3).bold()
-                        
                         Chart(volumeChartData) { dataPoint in
                             BarMark(
                                 x: .value("Semana", dataPoint.week),
@@ -246,32 +238,34 @@ struct ExerciseItemView: View {
 }
 
 struct SettingsView: View {
-    // Recibimos el ViewModel para poder llamar a sus funciones.
     @ObservedObject var progressVM: ProgressViewModel
+    @AppStorage("selectedHero") private var selectedHero: String = ""
     
-    // Estado para mostrar la alerta de confirmación.
     @State private var showingResetAlert = false
+    private let availableHeroes = DataManager.shared.getAvailableHeroes()
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                
-                // Sección de Gestión de Datos
                 GroupBox {
                     VStack(alignment: .leading) {
-                        Text("Gestión de Datos")
-                            .font(.title3.bold())
-                        
+                        Text("Plan de Entrenamiento").font(.title3).bold()
                         Divider()
-                        
-                        Text("Esta acción eliminará permanentemente todo tu progreso registrado en los entrenamientos. Las estadísticas en las gráficas también se reiniciarán. Esta acción no se puede deshacer.")
-                            .font(.callout)
-                            .foregroundStyle(.secondary)
-                            .padding(.vertical, 5)
-                        
-                        // Botón para iniciar el reseteo
+                        Picker("Héroe Actual:", selection: $selectedHero) {
+                            ForEach(availableHeroes, id: \.self) { hero in
+                                Text(hero).tag(hero)
+                            }
+                        }
+                        Text("Aviso: Cambiar el plan de entrenamiento reiniciará todo tu progreso y estadísticas actuales.").font(.caption).foregroundStyle(.secondary).padding(.top, 5)
+                    }
+                }
+                
+                GroupBox {
+                    VStack(alignment: .leading) {
+                        Text("Gestión de Datos").font(.title3).bold()
+                        Divider()
+                        Text("Esta acción eliminará permanentemente todo tu progreso registrado en los entrenamientos. Las estadísticas en las gráficas también se reiniciarán. Esta acción no se puede deshacer.").font(.callout).foregroundStyle(.secondary).padding(.vertical, 5)
                         Button("Reiniciar Progreso y Estadísticas", role: .destructive) {
-                            // Al pulsar, mostramos la alerta de confirmación
                             showingResetAlert = true
                         }
                         .buttonStyle(.borderedProminent)
@@ -279,11 +273,9 @@ struct SettingsView: View {
                     }
                 }
                 
-                // (Opcional) Puedes añadir más secciones aquí en el futuro
                 GroupBox {
                     VStack(alignment: .leading) {
-                        Text("Acerca de")
-                            .font(.title3.bold())
+                        Text("Acerca de").font(.title3).bold()
                         Divider()
                         HStack {
                             Text("Versión de la App")
@@ -296,10 +288,8 @@ struct SettingsView: View {
             .padding()
         }
         .navigationTitle("Configuración")
-        // Alerta de confirmación para una acción destructiva
         .alert("¿Estás seguro?", isPresented: $showingResetAlert) {
             Button("Reiniciar", role: .destructive) {
-                // Si el usuario confirma, llamamos a la función del ViewModel
                 progressVM.resetProgress()
             }
             Button("Cancelar", role: .cancel) {}

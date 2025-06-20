@@ -1,4 +1,5 @@
-[
+{
+  "Batman": [
   {
     "week": 1,
     "phase": "Adaptación",
@@ -263,4 +264,13 @@
     ],
     "diet": { "calories": 3850, "protein": 160, "carbs": 622, "fats": 80 }
   }
-]
+],
+  "Superman": [
+    {
+      "week": 1,
+      "phase": "Fundamentos Kriptonianos",
+      "workouts": [{"name": "Levantamiento Pesado", "reps": 5}],
+      "diet": {"calories": 5000, "protein": 300, "carbs": 600, "fats": 150}
+    }
+  ]
+}
