@@ -1,41 +1,49 @@
-//
-//  DataManager.swift
-//
-//  Created by Jimmy Angel Pérez Díaz on 6/14/25.
-//
-
+// DataManager.swift (Corregido)
 import Foundation
 
+// CORREGIDO: Marcamos toda la clase para que se ejecute en el Main Actor.
+// Esto resuelve todos los problemas de concurrencia al llamar a AssetManager.
+@MainActor
 class DataManager {
     static let shared = DataManager()
+    private let assetManager = AssetManager.shared
 
-    // El DataManager ahora carga un diccionario de planes
-    private lazy var workoutPlans: [String: [WeeklyPlan]] = load("workouts.json")
-
-    lazy var definitions: [Definition] = load("definitions.json")
-    lazy var descriptions: [String: String] = load("descriptions.json")
+    private(set) var workoutPlans: [String: [WeeklyPlan]] = [:]
+    private(set) var definitions: [Definition] = []
+    private(set) var descriptions: [String: String] = [:]
     
-    // Nueva función para obtener el plan del héroe especificado
+    private init() {
+        reloadData()
+    }
+
+    func reloadData() {
+        // Ahora las llamadas a assetManager son seguras.
+        workoutPlans = load(from: assetManager.getURL(for: "workouts.json")) ?? [:]
+        definitions = load(from: assetManager.getURL(for: "definitions.json")) ?? []
+        descriptions = load(from: assetManager.getURL(for: "descriptions.json")) ?? [:]
+        
+        // Informamos a AssetManager que la carga ha terminado (lógica simple)
+        assetManager.downloadState = .finished
+    }
+
     func plan(for hero: String) -> [WeeklyPlan] {
-        return workoutPlans[hero] ?? [] // Devuelve un plan vacío si el héroe no existe
+        return workoutPlans[hero] ?? []
     }
     
-    // Nueva función para obtener la lista de héroes disponibles
     func getAvailableHeroes() -> [String] {
         return workoutPlans.keys.sorted()
     }
 
-    // Carga un archivo JSON del bundle y lo decodifica en un tipo genérico T
-    private func load<T: Decodable>(_ filename: String) -> T {
-        guard let file = Bundle.main.url(forResource: filename, withExtension: nil) else {
-            fatalError("No se pudo encontrar el archivo \(filename) en el bundle.")
+    private func load<T: Decodable>(from url: URL) -> T? {
+        do {
+            let data = try Data(contentsOf: url)
+            let decodedData = try JSONDecoder().decode(T.self, from: data)
+            return decodedData
+        } catch {
+            print("Failed to load or decode file from \(url): \(error)")
+            // Informamos a AssetManager del error
+            assetManager.downloadState = .error(error.localizedDescription)
+            return nil
         }
-        guard let data = try? Data(contentsOf: file) else {
-            fatalError("No se pudo cargar el archivo \(filename) del bundle.")
-        }
-        guard let decodedData = try? JSONDecoder().decode(T.self, from: data) else {
-            fatalError("No se pudo decodificar el archivo \(filename).")
-        }
-        return decodedData
     }
 }

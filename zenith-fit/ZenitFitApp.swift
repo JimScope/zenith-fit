@@ -23,6 +23,7 @@ struct ZenitFitApp: App {
                     // Muestra la WelcomeView si la bienvenida no ha sido completada
                     WelcomeView()
                         .interactiveDismissDisabled() // Evita que se cierre deslizando
+                        .frame(minWidth: 500, minHeight: 600)
                 }
         }
     }

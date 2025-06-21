@@ -240,6 +240,11 @@ struct ExerciseItemView: View {
 struct SettingsView: View {
     @ObservedObject var progressVM: ProgressViewModel
     @AppStorage("selectedHero") private var selectedHero: String = ""
+
+    // CORREGIDO: El @StateObject se declara aquí, como propiedad de la vista.
+    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding: Bool = false
+
+    @StateObject private var assetManager = AssetManager.shared
     
     @State private var showingResetAlert = false
     private let availableHeroes = DataManager.shared.getAvailableHeroes()
@@ -247,6 +252,33 @@ struct SettingsView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
+                GroupBox {
+                    VStack(alignment: .leading) {
+                        Text("Actualización de Contenido").font(.title3).bold()
+                        Divider()
+
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("Comprueba si hay nuevos planes o actualizaciones.")
+                                switch assetManager.downloadState {
+                                case .idle:
+                                    Text("Estado: Listo").font(.caption).foregroundStyle(.secondary)
+                                case .downloading:
+                                    Text("Estado: Descargando...").font(.caption).foregroundStyle(.blue)
+                                case .finished:
+                                    Text("Estado: Contenido actualizado").font(.caption).foregroundStyle(.green)
+                                case .error(let msg):
+                                    Text("Estado: Error - \(msg)").font(.caption).foregroundStyle(.red)
+                                }
+                            }
+                            Spacer()
+                            Button("Actualizar") {
+                                assetManager.updateAssets()
+                            }
+                            .disabled(assetManager.downloadState == .downloading)
+                        }
+                    }
+                }
                 GroupBox {
                     VStack(alignment: .leading) {
                         Text("Plan de Entrenamiento").font(.title3).bold()
@@ -269,6 +301,25 @@ struct SettingsView: View {
                             showingResetAlert = true
                         }
                         .buttonStyle(.borderedProminent)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                    }
+                }
+                
+                GroupBox {
+                    VStack(alignment: .leading) {
+                        Text("Opciones de Depuración")
+                            .font(.title3.bold())
+                        Divider()
+                        
+                        Text("Esta opción forzará a que la pantalla de bienvenida se muestre la próxima vez que la app se reinicie, o inmediatamente si es posible.")
+                            .font(.callout)
+                            .foregroundStyle(.secondary)
+                            .padding(.vertical, 5)
+                        
+                        Button("Reiniciar Bienvenida") {
+                            // La acción es simple: ponemos la bandera en false.
+                            hasCompletedOnboarding = false
+                        }
                         .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
