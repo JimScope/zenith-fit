@@ -7,27 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F66DA1AE2E074B6A005208CA /* background-assets.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = F66DA1A62E074B6A005208CA /* background-assets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F6C26C2B2E08B9E600E7A897 /* background-assets.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = F6C26C232E08B9E600E7A897 /* background-assets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F66DA1AC2E074B6A005208CA /* PBXContainerItemProxy */ = {
+		F6C26C292E08B9E600E7A897 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F61D45952DFE378200B4FEDE /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F66DA1A52E074B6A005208CA;
+			remoteGlobalIDString = F6C26C222E08B9E600E7A897;
 			remoteInfo = "background-assets";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		F66DA1772E0718F6005208CA /* Embed ExtensionKit Extensions */ = {
+		F6C26C302E08B9E600E7A897 /* Embed ExtensionKit Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "$(EXTENSIONS_FOLDER_PATH)";
 			dstSubfolderSpec = 16;
 			files = (
-				F66DA1AE2E074B6A005208CA /* background-assets.appex in Embed ExtensionKit Extensions */,
+				F6C26C2B2E08B9E600E7A897 /* background-assets.appex in Embed ExtensionKit Extensions */,
 			);
 			name = "Embed ExtensionKit Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -36,23 +36,23 @@
 
 /* Begin PBXFileReference section */
 		F646FDA32E0603F3008989E9 /* Zenith Fit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zenith Fit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F66DA1A62E074B6A005208CA /* background-assets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = "background-assets.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6C26C232E08B9E600E7A897 /* background-assets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = "background-assets.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		F66DA1B12E074B6A005208CA /* Exceptions for "background-assets" folder in "background-assets" target */ = {
+		F6C26C2C2E08B9E600E7A897 /* Exceptions for "background-assets" folder in "background-assets" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = F66DA1A52E074B6A005208CA /* background-assets */;
+			target = F6C26C222E08B9E600E7A897 /* background-assets */;
 		};
-		F66DA1B42E07501E005208CA /* Exceptions for "zenith-fit" folder in "background-assets" target */ = {
+		F6C26C322E08BA1600E7A897 /* Exceptions for "zenith-fit" folder in "background-assets" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				AppConstants.swift,
 			);
-			target = F66DA1A52E074B6A005208CA /* background-assets */;
+			target = F6C26C222E08B9E600E7A897 /* background-assets */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -60,15 +60,15 @@
 		F646FDA42E0603F3008989E9 /* zenith-fit */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				F66DA1B42E07501E005208CA /* Exceptions for "zenith-fit" folder in "background-assets" target */,
+				F6C26C322E08BA1600E7A897 /* Exceptions for "zenith-fit" folder in "background-assets" target */,
 			);
 			path = "zenith-fit";
 			sourceTree = "<group>";
 		};
-		F66DA1A72E074B6A005208CA /* background-assets */ = {
+		F6C26C242E08B9E600E7A897 /* background-assets */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				F66DA1B12E074B6A005208CA /* Exceptions for "background-assets" folder in "background-assets" target */,
+				F6C26C2C2E08B9E600E7A897 /* Exceptions for "background-assets" folder in "background-assets" target */,
 			);
 			path = "background-assets";
 			sourceTree = "<group>";
@@ -83,7 +83,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F66DA1A32E074B6A005208CA /* Frameworks */ = {
+		F6C26C202E08B9E600E7A897 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -97,7 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				F646FDA42E0603F3008989E9 /* zenith-fit */,
-				F66DA1A72E074B6A005208CA /* background-assets */,
+				F6C26C242E08B9E600E7A897 /* background-assets */,
 				F61D459E2DFE378200B4FEDE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -106,7 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				F646FDA32E0603F3008989E9 /* Zenith Fit.app */,
-				F66DA1A62E074B6A005208CA /* background-assets.appex */,
+				F6C26C232E08B9E600E7A897 /* background-assets.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,12 +121,12 @@
 				F646FD9F2E0603F3008989E9 /* Sources */,
 				F646FDA02E0603F3008989E9 /* Frameworks */,
 				F646FDA12E0603F3008989E9 /* Resources */,
-				F66DA1772E0718F6005208CA /* Embed ExtensionKit Extensions */,
+				F6C26C302E08B9E600E7A897 /* Embed ExtensionKit Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F66DA1AD2E074B6A005208CA /* PBXTargetDependency */,
+				F6C26C2A2E08B9E600E7A897 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				F646FDA42E0603F3008989E9 /* zenith-fit */,
@@ -138,26 +138,26 @@
 			productReference = F646FDA32E0603F3008989E9 /* Zenith Fit.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F66DA1A52E074B6A005208CA /* background-assets */ = {
+		F6C26C222E08B9E600E7A897 /* background-assets */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F66DA1B22E074B6A005208CA /* Build configuration list for PBXNativeTarget "background-assets" */;
+			buildConfigurationList = F6C26C2D2E08B9E600E7A897 /* Build configuration list for PBXNativeTarget "background-assets" */;
 			buildPhases = (
-				F66DA1A22E074B6A005208CA /* Sources */,
-				F66DA1A32E074B6A005208CA /* Frameworks */,
-				F66DA1A42E074B6A005208CA /* Resources */,
+				F6C26C1F2E08B9E600E7A897 /* Sources */,
+				F6C26C202E08B9E600E7A897 /* Frameworks */,
+				F6C26C212E08B9E600E7A897 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				F66DA1A72E074B6A005208CA /* background-assets */,
+				F6C26C242E08B9E600E7A897 /* background-assets */,
 			);
 			name = "background-assets";
 			packageProductDependencies = (
 			);
 			productName = "background-assets";
-			productReference = F66DA1A62E074B6A005208CA /* background-assets.appex */;
+			productReference = F6C26C232E08B9E600E7A897 /* background-assets.appex */;
 			productType = "com.apple.product-type.extensionkit-extension";
 		};
 /* End PBXNativeTarget section */
@@ -173,7 +173,7 @@
 					F646FDA22E0603F3008989E9 = {
 						CreatedOnToolsVersion = 16.4;
 					};
-					F66DA1A52E074B6A005208CA = {
+					F6C26C222E08B9E600E7A897 = {
 						CreatedOnToolsVersion = 16.4;
 					};
 				};
@@ -193,7 +193,7 @@
 			projectRoot = "";
 			targets = (
 				F646FDA22E0603F3008989E9 /* Zenith Fit */,
-				F66DA1A52E074B6A005208CA /* background-assets */,
+				F6C26C222E08B9E600E7A897 /* background-assets */,
 			);
 		};
 /* End PBXProject section */
@@ -206,7 +206,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F66DA1A42E074B6A005208CA /* Resources */ = {
+		F6C26C212E08B9E600E7A897 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -223,7 +223,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F66DA1A22E074B6A005208CA /* Sources */ = {
+		F6C26C1F2E08B9E600E7A897 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -233,10 +233,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F66DA1AD2E074B6A005208CA /* PBXTargetDependency */ = {
+		F6C26C2A2E08B9E600E7A897 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F66DA1A52E074B6A005208CA /* background-assets */;
-			targetProxy = F66DA1AC2E074B6A005208CA /* PBXContainerItemProxy */;
+			target = F6C26C222E08B9E600E7A897 /* background-assets */;
+			targetProxy = F6C26C292E08B9E600E7A897 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -421,7 +421,7 @@
 			};
 			name = Release;
 		};
-		F66DA1AF2E074B6A005208CA /* Debug */ = {
+		F6C26C2E2E08B9E600E7A897 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "background-assets/background_assets.entitlements";
@@ -441,14 +441,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jimscope.zenith-fit.background-assets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = YES;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		F66DA1B02E074B6A005208CA /* Release */ = {
+		F6C26C2F2E08B9E600E7A897 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "background-assets/background_assets.entitlements";
@@ -468,7 +467,6 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jimscope.zenith-fit.background-assets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = YES;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -496,11 +494,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F66DA1B22E074B6A005208CA /* Build configuration list for PBXNativeTarget "background-assets" */ = {
+		F6C26C2D2E08B9E600E7A897 /* Build configuration list for PBXNativeTarget "background-assets" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F66DA1AF2E074B6A005208CA /* Debug */,
-				F66DA1B02E074B6A005208CA /* Release */,
+				F6C26C2E2E08B9E600E7A897 /* Debug */,
+				F6C26C2F2E08B9E600E7A897 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
