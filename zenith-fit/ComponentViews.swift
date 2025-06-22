@@ -263,8 +263,10 @@ struct SettingsView: View {
                                 switch assetManager.downloadState {
                                 case .idle:
                                     Text("Estado: Listo").font(.caption).foregroundStyle(.secondary)
-                                case .downloading:
-                                    Text("Estado: Descargando...").font(.caption).foregroundStyle(.blue)
+                                case .downloadingJSON:
+                                    Text("Estado: Descargando Planes...").font(.caption).foregroundStyle(.blue)
+                                case .downloadingImages:
+                                    Text("Descargando imágenes...").font(.caption).foregroundStyle(.blue)
                                 case .finished:
                                     Text("Estado: Contenido actualizado").font(.caption).foregroundStyle(.green)
                                 case .error(let msg):
@@ -275,7 +277,7 @@ struct SettingsView: View {
                             Button("Actualizar") {
                                 assetManager.updateAssets()
                             }
-                            .disabled(assetManager.downloadState == .downloading)
+                            .disabled(assetManager.downloadState == .downloadingJSON && assetManager.downloadState == .downloadingImages)
                         }
                     }
                 }

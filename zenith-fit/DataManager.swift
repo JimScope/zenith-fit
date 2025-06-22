@@ -21,9 +21,6 @@ class DataManager {
         workoutPlans = load(from: assetManager.getURL(for: "workouts.json")) ?? [:]
         definitions = load(from: assetManager.getURL(for: "definitions.json")) ?? []
         descriptions = load(from: assetManager.getURL(for: "descriptions.json")) ?? [:]
-        
-        // Informamos a AssetManager que la carga ha terminado (lógica simple)
-        assetManager.downloadState = .finished
     }
 
     func plan(for hero: String) -> [WeeklyPlan] {
@@ -41,8 +38,6 @@ class DataManager {
             return decodedData
         } catch {
             print("Failed to load or decode file from \(url): \(error)")
-            // Informamos a AssetManager del error
-            assetManager.downloadState = .error(error.localizedDescription)
             return nil
         }
     }
