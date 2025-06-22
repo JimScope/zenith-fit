@@ -93,7 +93,7 @@ class AssetManager: ObservableObject {
     // Función privada para guardar los datos en el App Group container.
     private func save(data: Data, to filename: String) {
         // Las imágenes se guardan en una subcarpeta para mantener el orden.
-        let isImage = filename.hasSuffix(".png") || filename.hasSuffix(".jpg")
+        let isImage = filename.hasSuffix(".jpg") || filename.hasSuffix(".jpg")
         let subfolder = isImage ? "images/" : ""
         
         guard let appGroupURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: AppConstants.appGroupIdentifier) else { return }
@@ -116,7 +116,7 @@ class AssetManager: ObservableObject {
     func loadImage(forHero heroName: String) -> Image {
         // 1. Intenta cargar desde el App Group (archivos descargados)
         if let appGroupURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: AppConstants.appGroupIdentifier) {
-            let imageURL = appGroupURL.appendingPathComponent("images/\(heroName).png")
+            let imageURL = appGroupURL.appendingPathComponent("images/\(heroName).jpg")
             if let nsImage = NSImage(contentsOf: imageURL) {
                 return Image(nsImage: nsImage)
             }
