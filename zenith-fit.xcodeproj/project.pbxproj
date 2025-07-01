@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F6A52FC12E0C5F5D0027F2C1 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = F6A52FB02E0C5F5D0027F2C1 /* AppIcon.icon */; };
 		F6C26C2B2E08B9E600E7A897 /* background-assets.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = F6C26C232E08B9E600E7A897 /* background-assets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		F646FDA32E0603F3008989E9 /* Zenith Fit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zenith Fit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6A52FB02E0C5F5D0027F2C1 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AppIcon.icon; sourceTree = "<group>"; };
 		F6C26C232E08B9E600E7A897 /* background-assets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = "background-assets.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -99,6 +101,7 @@
 				F646FDA42E0603F3008989E9 /* zenith-fit */,
 				F6C26C242E08B9E600E7A897 /* background-assets */,
 				F61D459E2DFE378200B4FEDE /* Products */,
+				F6A52FB02E0C5F5D0027F2C1 /* AppIcon.icon */,
 			);
 			sourceTree = "<group>";
 		};
@@ -203,6 +206,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6A52FC12E0C5F5D0027F2C1 /* AppIcon.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
