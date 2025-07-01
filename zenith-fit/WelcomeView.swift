@@ -45,9 +45,9 @@ struct WelcomePageOne: View {
                 Image(systemName: "figure.run.square.stack.fill")
                     .font(.system(size: 80))
                     .foregroundStyle(.tint)
-                Text("Bienvenido a Zenith Fit")
+                Text(NSLocalizedString("welcome_message", comment: "Welcome message"))
                     .font(.largeTitle.bold())
-                Text("Forja tu leyenda. Sigue los entrenamientos de los héroes más grandes.")
+                Text(NSLocalizedString("hero_selection_subtitle", comment: "Hero selection subtitle"))
                     .font(.headline)
                     .foregroundStyle(.secondary)
             }
@@ -56,7 +56,7 @@ struct WelcomePageOne: View {
             
             Spacer()
             
-            Button("Continuar", action: action)
+            Button(NSLocalizedString("onboarding_continue", comment: "Continue button"), action: action)
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
                 .padding()
@@ -77,7 +77,7 @@ struct WelcomePageTwo: View {
     
     var body: some View {
         VStack {
-            Text("Elige tu Camino")
+            Text(NSLocalizedString("hero_selection_title", comment: "Hero selection title"))
                 .font(.largeTitle.bold())
                 .padding(.top, 60)
             
@@ -94,7 +94,7 @@ struct WelcomePageTwo: View {
                 VStack {
                     Spacer()
                     ProgressView()
-                    Text("Buscando planes de entrenamiento...")
+                    Text(NSLocalizedString("loading_training_plans", comment: "Loading training plans message"))
                         .foregroundStyle(.secondary)
                         .padding(.top)
                     Spacer()
@@ -104,7 +104,7 @@ struct WelcomePageTwo: View {
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(availableHeroes, id: \.self) { hero in
                             HeroSelectionCard(
-                                heroName: hero,
+                                heroName: NSLocalizedString(hero.lowercased() + "_name", comment: "Hero name"),
                                 isSelected: localSelectedHero == hero
                             )
                             .onTapGesture {
@@ -120,7 +120,7 @@ struct WelcomePageTwo: View {
             
             Spacer()
             
-            Button("Comenzar Entrenamiento") {
+            Button(NSLocalizedString("start_training_button", comment: "Start training button")) {
                 onComplete(localSelectedHero)
             }
             .buttonStyle(.borderedProminent)
@@ -159,21 +159,21 @@ struct NetworkStatusView: View {
         case .idle:
             return nil // Si está idle, no devolvemos nada, así no se muestra la vista.
         case .downloadingJSON:
-            return ("Actualizando datos...", "arrow.down.circle", .secondary)
+            return (NSLocalizedString("updating_data", comment: "Updating data message"), "arrow.down.circle", .secondary)
         case .downloadingImages:
-            return ("Actualizando imágenes...", "arrow.down.circle", .secondary)
+            return (NSLocalizedString("updating_images", comment: "Updating images message"), "arrow.down.circle", .secondary)
         case .finished(let date):
             // La lógica del formateador está ahora segura dentro de esta función.
             let formatter = RelativeDateTimeFormatter()
             formatter.unitsStyle = .full
             let dateString = formatter.localizedString(for: date, relativeTo: Date())
-            return ("Actualizado \(dateString)", "checkmark.circle.fill", .green)
+            return (String(format: NSLocalizedString("updated_at", comment: "Updated at date message"), dateString), "checkmark.circle.fill", .green)
         case .error(let errorType):
             switch errorType {
             case .network:
-                return ("Modo offline. Mostrando contenido local.", "wifi.slash", .orange)
+                return (NSLocalizedString("offline_mode_message", comment: "Offline mode message"), "wifi.slash", .orange)
             case .dataProcessing:
-                return ("No se pudo actualizar el contenido.", "exclamationmark.triangle.fill", .red)
+                return (NSLocalizedString("content_update_failed_message", comment: "Content update failed message"), "exclamationmark.triangle.fill", .red)
             }
         }
     }
