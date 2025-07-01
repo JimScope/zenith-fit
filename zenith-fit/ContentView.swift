@@ -8,10 +8,14 @@ struct ContentView: View {
     @AppStorage("selectedHero") private var selectedHero: String = ""
     
     enum ViewType: String, CaseIterable, Hashable {
-        case route = "Ruta"
-        case definitions = "Definiciones"
-        case charts = "Gráficos"
-        case settings = "Configuración"
+        case route // Raw value will be localized
+        case definitions // Raw value will be localized
+        case charts // Raw value will be localized
+        case settings // Raw value will be localized
+
+        var localizedName: String {
+            NSLocalizedString(self.rawValue.lowercased(), comment: "View type name")
+        }
     }
 
     // --- State Management ---
@@ -32,13 +36,13 @@ struct ContentView: View {
     private var currentWeeklyPlan: WeeklyPlan {
         let plan = currentHeroPlan
         guard !plan.isEmpty, weekIndex < plan.count else {
-            return WeeklyPlan(week: 0, phase: "Plan no disponible", workouts: [], diet: Diet(calories: 0, protein: 0, carbs: 0, fats: 0))
+            return WeeklyPlan(week: 0, phase: NSLocalizedString("plan_not_available", comment: "Plan not available message"), workouts: [], diet: Diet(calories: 0, protein: 0, carbs: 0, fats: 0))
         }
         return plan[weekIndex]
     }
     
     private var routeViewTitle: String {
-        "Semana \(currentWeeklyPlan.week) - \(currentWeeklyPlan.phase)"
+        String(format: NSLocalizedString("route_view_title_format", comment: "Route view title format (Week %d - Phase %s)"), currentWeeklyPlan.week, currentWeeklyPlan.phase)
     }
 
     // --- Body ---

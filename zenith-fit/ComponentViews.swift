@@ -13,7 +13,8 @@ struct RouteView: View {
     
     private var currentPlan: WeeklyPlan {
         guard weekIndex < fullPlan.count else {
-            return WeeklyPlan(week: 0, phase: "Error", workouts: [], diet: Diet(calories: 0, protein: 0, carbs: 0, fats: 0))
+            // Ensure "Error" is a key in Localizable.strings or handle appropriately
+            return WeeklyPlan(week: 0, phase: NSLocalizedString("error", comment: "Error phase for plan"), workouts: [], diet: Diet(calories: 0, protein: 0, carbs: 0, fats: 0))
         }
         return fullPlan[weekIndex]
     }
@@ -30,7 +31,7 @@ struct RouteView: View {
                         ExerciseItemView(
                             workout: workout,
                             // CORREGIDO: El typo 'curren' ha sido reemplazado por 'DataManager.shared'.
-                            description: DataManager.shared.descriptions[workout.name] ?? "Sin descripción.",
+                            description: DataManager.shared.descriptions[workout.name] ?? NSLocalizedString("no_description_available", comment: "No description available"),
                             completedReps: progressBinding
                         )
                     }
@@ -38,10 +39,10 @@ struct RouteView: View {
             }
             .padding()
         }
-        .navigationTitle(title)
+        .navigationTitle(title) // Title is dynamic, localization handled where `title` is set
         .toolbar {
             ToolbarItemGroup {
-                Button("Anterior", systemImage: "arrow.left") { weekIndex -= 1 }
+                Button(NSLocalizedString("previous_button", comment: "Previous button"), systemImage: "arrow.left") { weekIndex -= 1 }
                     .disabled(weekIndex <= 0)
                 
                 VStack {
@@ -50,7 +51,7 @@ struct RouteView: View {
                         .font(.caption.bold())
                 }.frame(width: 50)
                 
-                Button("Siguiente", systemImage: "arrow.right") { weekIndex += 1 }
+                Button(NSLocalizedString("next_button", comment: "Next button"), systemImage: "arrow.right") { weekIndex += 1 }
                     .disabled(weekIndex >= fullPlan.count - 1)
             }
         }
@@ -79,7 +80,7 @@ struct DefinitionsView: View {
             }
             .padding()
         }
-        .navigationTitle("Definiciones")
+        .navigationTitle(NSLocalizedString("definitions_title", comment: "Definitions view title"))
     }
 }
 
@@ -147,10 +148,10 @@ struct ChartsView: View {
             VStack(alignment: .leading, spacing: 20) {
                 GroupBox {
                     VStack(alignment: .leading) {
-                        Text("Progreso por Ejercicio").font(.title3).bold()
-                        Picker("Selecciona un ejercicio:", selection: $selectedExercise) {
+                        Text(NSLocalizedString("progress_by_exercise_title", comment: "Progress by exercise chart title")).font(.title3).bold()
+                        Picker(NSLocalizedString("select_exercise_picker_label", comment: "Select exercise picker label"), selection: $selectedExercise) {
                             ForEach(allExercises, id: \.self) { exerciseName in
-                                Text(exerciseName).tag(exerciseName)
+                                Text(exerciseName).tag(exerciseName) // Exercise names might need localization if they are not codes
                             }
                         }
                         .pickerStyle(.menu)
@@ -158,32 +159,32 @@ struct ChartsView: View {
                         
                         Chart(progressChartData) { dataPoint in
                             LineMark(
-                                x: .value("Semana", dataPoint.week),
-                                y: .value("Completadas", dataPoint.completedReps)
+                                x: .value(NSLocalizedString("chart_week_axis_label", comment: "Chart week axis label"), dataPoint.week),
+                                y: .value(NSLocalizedString("chart_completed_reps_label", comment: "Chart completed reps label"), dataPoint.completedReps)
                             )
-                            .foregroundStyle(by: .value("Tipo", "Completadas"))
-                            .symbol(by: .value("Tipo", "Completadas"))
+                            .foregroundStyle(by: .value(NSLocalizedString("chart_type_legend_label", comment: "Chart type legend label"), NSLocalizedString("chart_completed_legend_value", comment: "Chart completed legend value")))
+                            .symbol(by: .value(NSLocalizedString("chart_type_legend_label", comment: "Chart type legend label"), NSLocalizedString("chart_completed_legend_value", comment: "Chart completed legend value")))
 
                             LineMark(
-                                x: .value("Semana", dataPoint.week),
-                                y: .value("Planeadas", dataPoint.plannedReps)
+                                x: .value(NSLocalizedString("chart_week_axis_label", comment: "Chart week axis label"), dataPoint.week),
+                                y: .value(NSLocalizedString("chart_planned_reps_label", comment: "Chart planned reps label"), dataPoint.plannedReps)
                             )
-                            .foregroundStyle(by: .value("Tipo", "Planeadas"))
-                            .symbol(by: .value("Tipo", "Planeadas"))
+                            .foregroundStyle(by: .value(NSLocalizedString("chart_type_legend_label", comment: "Chart type legend label"), NSLocalizedString("chart_planned_legend_value", comment: "Chart planned legend value")))
+                            .symbol(by: .value(NSLocalizedString("chart_type_legend_label", comment: "Chart type legend label"), NSLocalizedString("chart_planned_legend_value", comment: "Chart planned legend value")))
                             .lineStyle(StrokeStyle(dash: [5, 5]))
                         }
-                        .chartForegroundStyleScale(["Completadas": .blue, "Planeadas": .gray])
+                        .chartForegroundStyleScale([NSLocalizedString("chart_completed_legend_value", comment: "Chart completed legend value"): .blue, NSLocalizedString("chart_planned_legend_value", comment: "Chart planned legend value"): .gray])
                         .frame(height: 250)
                     }
                 }
                 
                 GroupBox {
                     VStack(alignment: .leading) {
-                        Text("Volumen Semanal Total (Reps Completadas)").font(.title3).bold()
+                        Text(NSLocalizedString("weekly_volume_chart_title", comment: "Weekly volume chart title")).font(.title3).bold()
                         Chart(volumeChartData) { dataPoint in
                             BarMark(
-                                x: .value("Semana", dataPoint.week),
-                                y: .value("Total Reps", dataPoint.totalReps)
+                                x: .value(NSLocalizedString("chart_week_axis_label", comment: "Chart week axis label"), dataPoint.week),
+                                y: .value(NSLocalizedString("chart_total_reps_label", comment: "Chart total reps label"), dataPoint.totalReps)
                             )
                             .foregroundStyle(.green.gradient)
                         }
@@ -193,7 +194,7 @@ struct ChartsView: View {
             }
             .padding()
         }
-        .navigationTitle("Gráficas de Progreso")
+        .navigationTitle(NSLocalizedString("progress_charts_title", comment: "Progress charts view title"))
     }
 }
 
@@ -207,18 +208,18 @@ struct ExerciseItemView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             VStack(alignment: .leading) {
-                Text(workout.name).font(.headline)
-                Text("Objetivo: \(workout.reps) reps").font(.subheadline).foregroundStyle(.secondary)
+                Text(workout.name).font(.headline) // Workout names might need localization if they are not codes
+                Text(String(format: NSLocalizedString("target_reps_label", comment: "Target reps label"), workout.reps)).font(.subheadline).foregroundStyle(.secondary)
             }
             
             if !description.isEmpty {
-                Text(description).font(.callout).foregroundStyle(.secondary).lineLimit(2)
+                Text(description).font(.callout).foregroundStyle(.secondary).lineLimit(2) // Description is already localized or fetched
             }
             
             Divider()
             
             HStack {
-                Text("Progreso:").font(.subheadline).foregroundStyle(.secondary)
+                Text(NSLocalizedString("progress_label", comment: "Progress label")).font(.subheadline).foregroundStyle(.secondary)
                 Spacer()
                 HStack(spacing: 15) {
                     Button(action: { if completedReps > 0 { completedReps -= 1 } }) {
@@ -254,27 +255,27 @@ struct SettingsView: View {
             VStack(alignment: .leading, spacing: 20) {
                 GroupBox {
                     VStack(alignment: .leading) {
-                        Text("Actualización de Contenido").font(.title3).bold()
+                        Text(NSLocalizedString("content_update_title", comment: "Content update section title")).font(.title3).bold()
                         Divider()
 
                         HStack {
                             VStack(alignment: .leading) {
-                                Text("Comprueba si hay nuevos planes o actualizaciones.")
+                                Text(NSLocalizedString("content_update_description", comment: "Content update description"))
                                 switch assetManager.downloadState {
                                 case .idle:
-                                    Text("Estado: Listo").font(.caption).foregroundStyle(.secondary)
+                                    Text(NSLocalizedString("status_idle", comment: "Status: Idle")).font(.caption).foregroundStyle(.secondary)
                                 case .downloadingJSON:
-                                    Text("Estado: Descargando Planes...").font(.caption).foregroundStyle(.blue)
+                                    Text(NSLocalizedString("status_downloading_plans", comment: "Status: Downloading plans")).font(.caption).foregroundStyle(.blue)
                                 case .downloadingImages:
-                                    Text("Descargando imágenes...").font(.caption).foregroundStyle(.blue)
+                                    Text(NSLocalizedString("status_downloading_images", comment: "Status: Downloading images")).font(.caption).foregroundStyle(.blue)
                                 case .finished:
-                                    Text("Estado: Contenido actualizado").font(.caption).foregroundStyle(.green)
-                                case .error(let msg):
-                                    Text("Estado: Error - \(msg)").font(.caption).foregroundStyle(.red)
+                                    Text(NSLocalizedString("status_content_updated", comment: "Status: Content updated")).font(.caption).foregroundStyle(.green)
+                                case .error(let msg): // Assuming msg is an error description not needing localization here
+                                    Text(String(format: NSLocalizedString("status_error_format", comment: "Status: Error format"), msg.localizedDescription)).font(.caption).foregroundStyle(.red)
                                 }
                             }
                             Spacer()
-                            Button("Actualizar") {
+                            Button(NSLocalizedString("update_button", comment: "Update button")) {
                                 assetManager.updateAssets()
                             }
                             .disabled(assetManager.downloadState == .downloadingJSON && assetManager.downloadState == .downloadingImages)
@@ -283,23 +284,23 @@ struct SettingsView: View {
                 }
                 GroupBox {
                     VStack(alignment: .leading) {
-                        Text("Plan de Entrenamiento").font(.title3).bold()
+                        Text(NSLocalizedString("training_plan_title", comment: "Training plan section title")).font(.title3).bold()
                         Divider()
-                        Picker("Héroe Actual:", selection: $selectedHero) {
+                        Picker(NSLocalizedString("current_hero_picker_label", comment: "Current hero picker label"), selection: $selectedHero) {
                             ForEach(availableHeroes, id: \.self) { hero in
-                                Text(hero).tag(hero)
+                                Text(NSLocalizedString(hero.lowercased() + "_name", comment: "Hero name")).tag(hero)
                             }
                         }
-                        Text("Aviso: Cambiar el plan de entrenamiento reiniciará todo tu progreso y estadísticas actuales.").font(.caption).foregroundStyle(.secondary).padding(.top, 5)
+                        Text(NSLocalizedString("change_plan_warning", comment: "Change plan warning")).font(.caption).foregroundStyle(.secondary).padding(.top, 5)
                     }
                 }
                 
                 GroupBox {
                     VStack(alignment: .leading) {
-                        Text("Gestión de Datos").font(.title3).bold()
+                        Text(NSLocalizedString("data_management_title", comment: "Data management section title")).font(.title3).bold()
                         Divider()
-                        Text("Esta acción eliminará permanentemente todo tu progreso registrado en los entrenamientos. Las estadísticas en las gráficas también se reiniciarán. Esta acción no se puede deshacer.").font(.callout).foregroundStyle(.secondary).padding(.vertical, 5)
-                        Button("Reiniciar Progreso y Estadísticas", role: .destructive) {
+                        Text(NSLocalizedString("reset_progress_warning", comment: "Reset progress warning")).font(.callout).foregroundStyle(.secondary).padding(.vertical, 5)
+                        Button(NSLocalizedString("reset_progress_button", comment: "Reset progress button"), role: .destructive) {
                             showingResetAlert = true
                         }
                         .buttonStyle(.borderedProminent)
@@ -309,16 +310,16 @@ struct SettingsView: View {
                 
                 GroupBox {
                     VStack(alignment: .leading) {
-                        Text("Opciones de Depuración")
+                        Text(NSLocalizedString("debugging_options_title", comment: "Debugging options section title"))
                             .font(.title3.bold())
                         Divider()
                         
-                        Text("Esta opción forzará a que la pantalla de bienvenida se muestre la próxima vez que la app se reinicie, o inmediatamente si es posible.")
+                        Text(NSLocalizedString("reset_onboarding_description", comment: "Reset onboarding description"))
                             .font(.callout)
                             .foregroundStyle(.secondary)
                             .padding(.vertical, 5)
                         
-                        Button("Reiniciar Bienvenida") {
+                        Button(NSLocalizedString("reset_onboarding_button", comment: "Reset onboarding button")) {
                             // La acción es simple: ponemos la bandera en false.
                             hasCompletedOnboarding = false
                         }
@@ -328,26 +329,26 @@ struct SettingsView: View {
                 
                 GroupBox {
                     VStack(alignment: .leading) {
-                        Text("Acerca de").font(.title3).bold()
+                        Text(NSLocalizedString("about_title", comment: "About section title")).font(.title3).bold()
                         Divider()
                         HStack {
-                            Text("Versión de la App")
+                            Text(NSLocalizedString("app_version_label", comment: "App version label"))
                             Spacer()
-                            Text("1.0.0").foregroundStyle(.secondary)
+                            Text("1.0.0").foregroundStyle(.secondary) // Version number might not need localization
                         }
                     }
                 }
             }
             .padding()
         }
-        .navigationTitle("Configuración")
-        .alert("¿Estás seguro?", isPresented: $showingResetAlert) {
-            Button("Reiniciar", role: .destructive) {
+        .navigationTitle(NSLocalizedString("settings_title", comment: "Settings view title"))
+        .alert(NSLocalizedString("are_you_sure_alert_title", comment: "Are you sure alert title"), isPresented: $showingResetAlert) {
+            Button(NSLocalizedString("reset_button", comment: "Reset button"), role: .destructive) {
                 progressVM.resetProgress()
             }
-            Button("Cancelar", role: .cancel) {}
+            Button(NSLocalizedString("cancel_button", comment: "Cancel button"), role: .cancel) {}
         } message: {
-            Text("Todo tu progreso de entrenamiento se eliminará de forma permanente.")
+            Text(NSLocalizedString("reset_progress_alert_message", comment: "Reset progress alert message"))
         }
     }
 }
