@@ -249,6 +249,15 @@ struct SettingsView: View {
     
     @State private var showingResetAlert = false
     private let availableHeroes = DataManager.shared.getAvailableHeroes()
+
+    private func localizedDownloadError(_ errorType: DownloadState.ErrorType) -> String {
+        switch errorType {
+        case .network(let detail):
+            return String(format: NSLocalizedString("download_error_network", comment: "Network error message format"), detail)
+        case .dataProcessing(let detail):
+            return String(format: NSLocalizedString("download_error_data_processing", comment: "Data processing error message format"), detail)
+        }
+    }
     
     var body: some View {
         ScrollView {
@@ -270,8 +279,8 @@ struct SettingsView: View {
                                     Text(NSLocalizedString("status_downloading_images", comment: "Status: Downloading images")).font(.caption).foregroundStyle(.blue)
                                 case .finished:
                                     Text(NSLocalizedString("status_content_updated", comment: "Status: Content updated")).font(.caption).foregroundStyle(.green)
-                                case .error(let msg): // Assuming msg is an error description not needing localization here
-                                    Text(String(format: NSLocalizedString("status_error_format", comment: "Status: Error format"), msg.localizedDescription)).font(.caption).foregroundStyle(.red)
+                                case .error(let errorType):
+                                    Text(String(format: NSLocalizedString("status_error_format", comment: "Status: Error format"), localizedDownloadError(errorType))).font(.caption).foregroundStyle(.red)
                                 }
                             }
                             Spacer()

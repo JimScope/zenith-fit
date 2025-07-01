@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		F6A52FC12E0C5F5D0027F2C1 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = F6A52FB02E0C5F5D0027F2C1 /* AppIcon.icon */; };
 		F6C26C2B2E08B9E600E7A897 /* background-assets.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = F6C26C232E08B9E600E7A897 /* background-assets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		LOCALIZABLESTRINGSENBUILDFILE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = LOCALIZABLESTRINGSENFILE /* Localizable.strings */; };
-		LOCALIZABLESTRINGSESBUILDFILE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = LOCALIZABLESTRINGSESFILE /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,10 +39,6 @@
 		F646FDA32E0603F3008989E9 /* Zenith Fit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zenith Fit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6A52FB02E0C5F5D0027F2C1 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AppIcon.icon; sourceTree = "<group>"; };
 		F6C26C232E08B9E600E7A897 /* background-assets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = "background-assets.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		LOCALIZABLESTRINGSENLPROJ /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = "folder.lproj"; name = en.lproj; path = "zenith-fit/en.lproj"; sourceTree = "<group>"; };
-		LOCALIZABLESTRINGSESLPROJ /* es.lproj */ = {isa = PBXFileReference; lastKnownFileType = "folder.lproj"; name = es.lproj; path = "zenith-fit/es.lproj"; sourceTree = "<group>"; };
-		LOCALIZABLESTRINGSENFILE /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "zenith-fit/en.lproj/Localizable.strings"; sourceTree = "<group>"; defaultEncoding = 4; explicitFileType = text.plist.strings; includeInIndex = 0; };
-		LOCALIZABLESTRINGSESFILE /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "zenith-fit/es.lproj/Localizable.strings"; sourceTree = "<group>"; defaultEncoding = 4; explicitFileType = text.plist.strings; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -66,15 +60,9 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F646FDA42E0603F3008989E9 /* zenith-fit */ = {
-			isa = PBXGroup; // Changed from PBXFileSystemSynchronizedRootGroup
-			children = (
-				// Add other existing files/groups in zenith-fit here if any, then the new .lproj folders
-				LOCALIZABLESTRINGSENLPROJ /* en.lproj */,
-				LOCALIZABLESTRINGSESLPROJ /* es.lproj */,
-				// Assuming AppConstants.swift, AssetManager.swift etc. are direct children of F61D45942DFE378200B4FEDE (root group)
-				// or need to be listed here if they are meant to be under a 'zenith-fit' specific group in Project Navigator.
-				// For now, I will assume they are handled by the existing structure or need separate grouping.
-				// This part needs careful checking against the actual project structure if files are not showing up.
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F6C26C322E08BA1600E7A897 /* Exceptions for "zenith-fit" folder in "background-assets" target */,
 			);
 			path = "zenith-fit";
 			sourceTree = "<group>";
@@ -198,7 +186,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				es,
 				Base,
 			);
 			mainGroup = F61D45942DFE378200B4FEDE;
@@ -220,8 +207,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6A52FC12E0C5F5D0027F2C1 /* AppIcon.icon in Resources */,
-				LOCALIZABLESTRINGSENBUILDFILE /* Localizable.strings in Resources */,
-				LOCALIZABLESTRINGSESBUILDFILE /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
